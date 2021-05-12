@@ -29,7 +29,7 @@ def clean_revigo_df(raw_revigo_df: pd.DataFrame) -> pd.DataFrame:
 	revigo = raw_revigo_df.copy()
 	revigo.TermID = revigo.TermID.apply(lambda x: x.replace('"', ''))
 	revigo.Name = revigo.Name.apply(lambda x: x.replace('"', ''))
-	revigo = revigo[revigo.PlotX != "null"]
+	revigo = revigo[revigo.Eliminated == 'False']
 	revigo.PlotX = revigo.PlotX.astype(float)
 	revigo.PlotY = revigo.PlotY.astype(float)
 	return revigo
